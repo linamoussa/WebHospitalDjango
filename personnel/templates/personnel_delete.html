@@ -1,7 +1,27 @@
-<h1>Supprimer {{ object.prenom }} {{ object.nom }} ?</h1>
-<p>Êtes-vous sûr de vouloir supprimer ce personnel ?</p>
-<form method="post">
-    {% csrf_token %}
-    <button type="submit">Confirmer la suppression</button>
-</form>
-<a href="{% url 'personnel_list' %}">Annuler</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supprimer {{ object.prenom }} {{ object.nom }} ?</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css%}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="card shadow-sm">
+            <div class="card-body">
+                <h1 class="card-title text-danger">Supprimer {{ object.prenom }} {{ object.nom }} ?</h1>
+                <p>Êtes-vous sûr de vouloir supprimer ce personnel ? Cette action est irréversible.</p>
+                <form method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Confirmer la suppression</button>
+                    <a href="{% url 'personnel_list' %}" class="btn btn-secondary">Annuler</a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

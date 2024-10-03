@@ -1,11 +1,30 @@
-<h1>Liste des Personnels</h1>
-<a href="{% url 'personnel_create' %}">Ajouter un Personnel</a>
-<ul>
-    {% for personnel in personnels %}
-        <li>
-            <a href="{% url 'personnel_detail' personnel.pk %}">{{ personnel.prenom }} {{ personnel.nom }}</a>
-            (<a href="{% url 'personnel_update' personnel.pk %}">Modifier</a> | 
-            <a href="{% url 'personnel_delete' personnel.pk %}">Supprimer</a>)
-        </li>
-    {% endfor %}
-</ul>
+<head>
+    <title>Liste des Personnels</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Liste des Personnels</h1>
+        <a href="{% url 'personnel_create' %}" class="btn btn-primary mb-3">Ajouter un Personnel</a>
+
+        <ul class="list-group">
+            {% for personnel in personnels %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <div>
+                        <a href="{% url 'personnel_detail' personnel.pk %}" class="text-decoration-none">
+                            {{ personnel.prenom }} {{ personnel.nom }}
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{% url 'personnel_update' personnel.pk %}" class="btn btn-sm btn-warning">Modifier</a>
+                        <a href="{% url 'personnel_delete' personnel.pk %}" class="btn btn-sm btn-danger">Supprimer</a>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</body>
+</html>
