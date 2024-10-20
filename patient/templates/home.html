@@ -20,8 +20,11 @@
                         <a class="nav-link" href="#">Contact</a>
                     </li>
                     {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <span class="nav-link">Bienvenue, {{ user.username }}</span>
+                    </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'logout' %}">Déconnexion</a>
+                            <a class="nav-link" href="{% url 'login' %}">Déconnexion</a>
                         </li>
                     {% else %}
                         <li class="nav-item">
